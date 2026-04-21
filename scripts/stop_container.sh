@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-containers=$(docker ps -aq)
+containers=$(docker ps -aq | xargs)
 
 if [ -z "$containers" ]; then
   echo "No containers to remove"
