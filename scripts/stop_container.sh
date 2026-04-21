@@ -1,14 +1,19 @@
 #!/bin/bash
-set -e
+set +e
 
-echo "STOP SCRIPT EXECUTED"
+echo "STOP SCRIPT START"
 
 containers=$(docker ps -aq)
 
 if [ -z "$containers" ]; then
-  echo "No containers to remove"
-  exit 0
+  echo "No containers found"
+else
+  echo "Removing containers: $containers"
+  docker rm -f $containers
+  EXIT_CODE=$?
+  echo "docker rm exit code: $EXIT_CODE"
 fi
 
-echo "Containers found: $containers"
-docker rm -f $containers
+echo "STOP SCRIPT END"
+
+exit 0
