@@ -1,11 +1,7 @@
 #!/bin/bash
 set -e
 
-containers=$(docker ps -aq)
-
-if [ -z "$containers" ]; then
-  echo "No containers to remove"
-  exit 0
-fi
-
-docker rm -f $containers
+echo "=== RUNNING STOP_CONTAINER V4 ==="
+date
+whoami
+pwd
