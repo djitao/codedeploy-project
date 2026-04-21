@@ -1,4 +1,6 @@
 #!/bin/bash
 set -e
 
-docker ps -aq | xargs -r docker rm -f
+echo "=== CLEANING CONTAINERS ==="
+
+docker ps -aq | xargs -r docker rm -f || true
