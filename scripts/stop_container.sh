@@ -1,6 +1,14 @@
 #!/bin/bash
 set -e
 
-echo "=== CLEANING CONTAINERS ==="
+echo "STOP SCRIPT EXECUTED"
 
-docker ps -aq | xargs -r docker rm -f || true
+containers=$(docker ps -aq)
+
+if [ -z "$containers" ]; then
+  echo "No containers to remove"
+  exit 0
+fi
+
+echo "Containers found: $containers"
+docker rm -f $containers
